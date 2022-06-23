@@ -68,7 +68,7 @@ def main():
 
     # Create the model.
     logging.info("Creating the model...")
-    model_path = f"azureml://jobs/{job.name}/outputs/model_dir"
+    model_path = f"azureml://jobs/{job.name}/outputs/model"
     model = Model(path=model_path,
                   name=MODEL_NAME,
                   type=AssetTypes.MLFLOW_MODEL)

@@ -24,7 +24,6 @@ def main():
     ml_client = MLClient.from_config(credential=credential)
 
     # Create the compute cluster.
-    logging.info("Creating the compute cluster...")
     cluster_cpu = AmlCompute(
         name=COMPUTE_NAME,
         type="amlcompute",
@@ -36,7 +35,6 @@ def main():
     ml_client.begin_create_or_update(cluster_cpu)
 
     # Create the data set.
-    logging.info("Creating the data set...")
     dataset = Data(
         path=DATA_PATH,
         type=AssetTypes.URI_FOLDER,
@@ -51,7 +49,6 @@ def main():
                               conda_file=CONDA_PATH)
 
     # Create the job.
-    logging.info("Creating the job...")
     job = CommandJob(
         compute=COMPUTE_NAME,
         description="Trains a simple neural network on the Fashion-MNIST " +
@@ -67,7 +64,6 @@ def main():
     ml_client.jobs.stream(job.name)
 
     # Create the model.
-    logging.info("Creating the model...")
     model_path = f"azureml://jobs/{job.name}/outputs/model"
     model = Model(path=model_path,
                   name=MODEL_NAME,

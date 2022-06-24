@@ -9,12 +9,13 @@ from azure.identity import DefaultAzureCredential
 from azure.ai.ml.entities import (AmlCompute, Data, Environment, CommandJob,
                                   Model)
 
+from common import MODEL_NAME
+
 COMPUTE_NAME = "cluster-cpu"
 DATA_NAME = "data-fashion-mnist"
 DATA_PATH = Path(Path(__file__).parent.parent, "data")
 CONDA_PATH = Path(Path(__file__).parent, "conda.yml")
 CODE_PATH = Path(Path(__file__).parent.parent, "src")
-MODEL_NAME = "model-command-sdk"
 MODEL_PATH = Path(Path(__file__).parent.parent)
 
 

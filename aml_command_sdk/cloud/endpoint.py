@@ -7,9 +7,8 @@ from azure.ai.ml import MLClient
 from azure.ai.ml.entities import ManagedOnlineDeployment, ManagedOnlineEndpoint
 from azure.identity import DefaultAzureCredential
 
-from common import MODEL_NAME
+from common import MODEL_NAME, ENDPOINT_NAME
 
-ENDPOINT_NAME = "endpoint-command-sdk"
 DEPLOYMENT_NAME = "blue"
 TEST_DATA_PATH = Path(
     Path(__file__).parent.parent, "test_data", "images_azureml.json")

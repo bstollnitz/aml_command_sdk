@@ -1,6 +1,6 @@
 # How to train and deploy in Azure ML, using the Python SDK
 
-This project shows how to train a Fashion MNIST model with an Azure ML job, and how to deploy it using an online managed endpoint. It uses the Python SDK API, and MLflow for tracking and model representation.
+This project shows how to train a Fashion MNIST model with an Azure ML job, and how to deploy it using an online managed endpoint. It uses the Azure ML Python SDK API, and MLflow for tracking and model representation.
 
 ## Azure setup
 
@@ -43,7 +43,7 @@ conda activate aml_command_sdk
 cd aml_command_sdk
 ```
 
-* Run src/train.py by pressing F5.
+* Run src/train.py.
 * You can analyze the metrics logged in the "mlruns" directory with the following command:
 
 ```
@@ -70,10 +70,14 @@ Make sure you have a "config.json" file somewhere in the parent folder hierarchy
 }
 ```
 
-### Create and run the pipeline
+### Create and run the pipeline, which outputs a model
 
 * Run cloud/pipeline-job.py.
 
-### Create and invoke the endpoint
+### Create and invoke the endpoint for the model
 
 * Run cloud/endpoint.py.
+
+### Cleanup the endpoint
+
+Once you're done working with the endpoint, you can clean it up to avoid getting charged by running cloud/delete_endpoint.py.

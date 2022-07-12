@@ -72,11 +72,11 @@ Make sure you have a "config.json" file somewhere in the parent folder hierarchy
 
 ### Create and run the pipeline, which outputs a model
 
-* Run cloud/pipeline-job.py.
+Run cloud/pipeline-job.py.
 
 ### Create and invoke the endpoint for the model
 
-* Run cloud/endpoint.py.
+Run cloud/endpoint.py.
 
 ### Cleanup the endpoint
 

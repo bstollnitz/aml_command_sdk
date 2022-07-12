@@ -44,7 +44,6 @@ def main():
 
     # Invoke the endpoint.
     result = ml_client.online_endpoints.invoke(endpoint_name=ENDPOINT_NAME,
-                                               deployment_name=DEPLOYMENT_NAME,
                                                request_file=TEST_DATA_PATH)
     logging.info(result)
 

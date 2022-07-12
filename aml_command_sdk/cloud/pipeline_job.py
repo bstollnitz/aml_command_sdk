@@ -29,7 +29,7 @@ def main():
         name=COMPUTE_NAME,
         type="amlcompute",
         size="Standard_DS4_v2",
-        location="westus",
+        location="westus2",
         min_instances=0,
         max_instances=4,
     )
@@ -37,10 +37,10 @@ def main():
 
     # Create the data set.
     dataset = Data(
+        name=DATA_NAME,
+        description="Fashion MNIST data set",
         path=DATA_PATH,
         type=AssetTypes.URI_FOLDER,
-        description="Fashion MNIST data set",
-        name=DATA_NAME,
     )
     ml_client.data.create_or_update(dataset)
 
@@ -51,23 +51,23 @@ def main():
 
     # Create the job.
     job = CommandJob(
-        compute=COMPUTE_NAME,
         description="Trains a simple neural network on the Fashion-MNIST " +
         "dataset.",
+        compute=COMPUTE_NAME,
         inputs=dict(fashion_mnist=Input(path=f"{DATA_NAME}@latest")),
         outputs=dict(model=Output(type=AssetTypes.MLFLOW_MODEL)),
         code=CODE_PATH,
+        environment=environment,
         command="python train.py --data_dir ${{inputs.fashion_mnist}} " +
         "--model_dir ${{outputs.model}}",
-        environment=environment,
     )
     job = ml_client.jobs.create_or_update(job)
     ml_client.jobs.stream(job.name)
 
     # Create the model.
     model_path = f"azureml://jobs/{job.name}/outputs/model"
-    model = Model(path=model_path,
-                  name=MODEL_NAME,
+    model = Model(name=MODEL_NAME,
+                  path=model_path,
                   type=AssetTypes.MLFLOW_MODEL)
     registered_model = ml_client.models.create_or_update(model)
 

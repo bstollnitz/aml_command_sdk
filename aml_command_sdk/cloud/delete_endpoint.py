@@ -1,3 +1,5 @@
+"""Deletes an endpoint."""
+
 import logging
 
 from azure.ai.ml import MLClient

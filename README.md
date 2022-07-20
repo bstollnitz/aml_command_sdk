@@ -22,7 +22,7 @@ This project shows how to train a Fashion MNIST model with an Azure ML job, and 
 
 If you have access to GitHub Codespaces, click on the "Code" button in this GitHub repo, select the "Codespaces" tab, and then click on "New codespace."
 
-Alternatively, you can set up your local machine using the following steps.
+Alternatively, you can set up your local machine with the right conda environment using the following steps.
 
 Install conda environment:
 
@@ -78,6 +78,6 @@ Run cloud/pipeline_job.py.
 
 Run cloud/endpoint.py.
 
-### Cleanup the endpoint
+### Clean up the endpoint
 
 Once you're done working with the endpoint, you can clean it up to avoid getting charged by running cloud/delete_endpoint.py.

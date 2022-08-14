@@ -70,9 +70,9 @@ Make sure you have a "config.json" file somewhere in the parent folder hierarchy
 }
 ```
 
-### Create and run the pipeline, which outputs a model
+### Create and run the job, which outputs a model
 
-Run cloud/pipeline_job.py.
+Run cloud/job.py.
 
 ### Create and invoke the endpoint for the model
 

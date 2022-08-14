@@ -40,6 +40,7 @@ def generate_csv_from_images() -> None:
     delimiter = ","
     fmt = "%.6f"
     image_paths = [f for f in Path(IMAGES_DIR).iterdir() if Path.is_file(f)]
+    image_paths.sort()
 
     X = None
     for (i, image_path) in enumerate(image_paths):
@@ -55,7 +56,8 @@ def generate_csv_from_images() -> None:
                X=X,
                delimiter=delimiter,
                fmt=fmt,
-               header=header)
+               header=header,
+               comments="")
 
 
 def get_dataframe_from_images() -> pandas.DataFrame:
@@ -63,6 +65,7 @@ def get_dataframe_from_images() -> pandas.DataFrame:
     Returns a pandas.DataFrame object that contains the images.
     """
     image_paths = [f for f in Path(IMAGES_DIR).iterdir() if Path.is_file(f)]
+    image_paths.sort()
 
     df = None
     for (i, image_path) in enumerate(image_paths):

@@ -2,6 +2,12 @@
 
 This project shows how to train a Fashion MNIST model with an Azure ML job, and how to deploy it using an online managed endpoint. It uses the Azure ML Python SDK API, and MLflow for tracking and model representation.
 
+
+## Blog post
+
+To learn more about the code in this repo, check out the accompanying blog post: https://bea.stollnitz.com/blog/aml-command/
+
+
 ## Azure setup
 
 * You need to have an Azure subscription. You can get a [free subscription](https://azure.microsoft.com/en-us/free?WT.mc_id=aiml-67316-bstollnitz) to try it out.
@@ -81,3 +87,9 @@ Run cloud/endpoint.py.
 ### Clean up the endpoint
 
 Once you're done working with the endpoint, you can clean it up to avoid getting charged by running cloud/delete_endpoint.py.
+
+
+## Related resources
+* [YAML schema for Command Job](https://docs.microsoft.com/en-us/azure/machine-learning/reference-yaml-job-command?WT.mc_id=aiml-67316-bstollnitz)
+* [az ml job commands](https://docs.microsoft.com/en-us/cli/azure/ml/job?view=azure-cli-latest#az-ml-job-create?WT.mc_id=aiml-67316-bstollnitz)
+* [Output formats for Azure CLI commands](https://docs.microsoft.com/en-us/cli/azure/format-output-azure-cli?WT.mc_id=aiml-67316-bstollnitz)

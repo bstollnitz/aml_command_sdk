@@ -1,8 +1,12 @@
 {
     "python.linting.pylintEnabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.mypyArgs": [
+        "--config-file=${workspaceFolder}/.mypy.ini"
+    ],
     "python.formatting.provider": "yapf",
+    "editor.formatOnSave": true,
     "editor.rulers": [
         80
     ],
-    "editor.formatOnSave": true,
 }

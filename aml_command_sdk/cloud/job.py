@@ -19,7 +19,7 @@ CODE_PATH = Path(Path(__file__).parent.parent, "src")
 MODEL_PATH = Path(Path(__file__).parent.parent)
 
 
-def main():
+def main() -> None:
     logging.basicConfig(level=logging.INFO)
     credential = DefaultAzureCredential()
     ml_client = MLClient.from_config(credential=credential)
@@ -39,7 +39,7 @@ def main():
     dataset = Data(
         name=DATA_NAME,
         description="Fashion MNIST data set",
-        path=DATA_PATH,
+        path=DATA_PATH.as_posix(),
         type=AssetTypes.URI_FOLDER,
     )
     ml_client.data.create_or_update(dataset)

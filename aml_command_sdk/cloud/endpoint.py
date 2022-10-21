@@ -14,7 +14,7 @@ TEST_DATA_PATH = Path(
     Path(__file__).parent.parent, "test_data", "images_azureml.json")
 
 
-def main():
+def main() -> None:
     logging.basicConfig(level=logging.INFO)
     credential = DefaultAzureCredential()
     ml_client = MLClient.from_config(credential=credential)

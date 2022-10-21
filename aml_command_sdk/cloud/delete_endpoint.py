@@ -8,7 +8,7 @@ from azure.identity import DefaultAzureCredential
 from common import ENDPOINT_NAME
 
 
-def main():
+def main() -> None:
     logging.basicConfig(level=logging.INFO)
     credential = DefaultAzureCredential()
     ml_client = MLClient.from_config(credential=credential)

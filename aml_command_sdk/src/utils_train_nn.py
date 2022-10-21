@@ -1,6 +1,5 @@
 """Utilities that help with training neural networks."""
 
-from typing import Tuple
 from tqdm import tqdm
 
 import torch
@@ -9,15 +8,13 @@ from torch.nn.modules.loss import CrossEntropyLoss
 from torch.optim import Optimizer
 from torch.utils.data import DataLoader
 
-from neural_network import NeuralNetwork
 
-
-def fit(device: str, dataloader: DataLoader, model: nn.Module,
-        loss_fn: CrossEntropyLoss, optimizer: Optimizer) -> Tuple[float, float]:
+def fit(device: str, dataloader: DataLoader[torch.Tensor], model: nn.Module,
+        loss_fn: CrossEntropyLoss, optimizer: Optimizer) -> tuple[float, float]:
     """
     Trains the given model for a single epoch.
     """
-    loss_sum = 0
+    loss_sum = 0.0
     correct_item_count = 0
     item_count = 0
 
@@ -40,9 +37,9 @@ def fit(device: str, dataloader: DataLoader, model: nn.Module,
     return (average_loss, accuracy)
 
 
-def _fit_one_batch(x: torch.Tensor, y: torch.Tensor, model: NeuralNetwork,
+def _fit_one_batch(x: torch.Tensor, y: torch.Tensor, model: nn.Module,
                    loss_fn: CrossEntropyLoss,
-                   optimizer: Optimizer) -> Tuple[torch.Tensor, torch.Tensor]:
+                   optimizer: Optimizer) -> tuple[torch.Tensor, torch.Tensor]:
     """
     Trains a single minibatch (backpropagation algorithm).
     """
@@ -56,12 +53,13 @@ def _fit_one_batch(x: torch.Tensor, y: torch.Tensor, model: NeuralNetwork,
     return (y_prime, loss)
 
 
-def evaluate(device: str, dataloader: DataLoader, model: nn.Module,
-             loss_fn: CrossEntropyLoss) -> Tuple[float, float]:
+def evaluate(device: str, dataloader: DataLoader[torch.Tensor],
+             model: nn.Module,
+             loss_fn: CrossEntropyLoss) -> tuple[float, float]:
     """
     Evaluates the given model for the whole dataset once.
     """
-    loss_sum = 0
+    loss_sum = 0.0
     correct_item_count = 0
     item_count = 0
 
@@ -86,8 +84,8 @@ def evaluate(device: str, dataloader: DataLoader, model: nn.Module,
 
 
 def _evaluate_one_batch(
-        x: torch.tensor, y: torch.tensor, model: NeuralNetwork,
-        loss_fn: CrossEntropyLoss) -> Tuple[torch.Tensor, torch.Tensor]:
+        x: torch.Tensor, y: torch.Tensor, model: nn.Module,
+        loss_fn: CrossEntropyLoss) -> tuple[torch.Tensor, torch.Tensor]:
     """
     Evaluates a single minibatch.
     """

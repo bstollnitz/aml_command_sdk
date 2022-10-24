@@ -42,10 +42,10 @@ def generate_csv_from_images() -> None:
     image_paths = [f for f in Path(IMAGES_DIR).iterdir() if Path.is_file(f)]
     image_paths.sort()
 
-    X = None
+    X = np.empty((0, 0))
     for (i, image_path) in enumerate(image_paths):
         with Image.open(image_path) as image:
-            if X is None:
+            if len(X) == 0:
                 size = image.height * image.width
                 X = np.empty((len(image_paths), size))
             x = np.asarray(image).reshape((-1)) / 255.0
@@ -67,7 +67,7 @@ def get_dataframe_from_images() -> pandas.DataFrame:
     image_paths = [f for f in Path(IMAGES_DIR).iterdir() if Path.is_file(f)]
     image_paths.sort()
 
-    df = None
+    df = pandas.DataFrame()
     for (i, image_path) in enumerate(image_paths):
         with Image.open(image_path) as image:
             x = np.asarray(image).reshape((1, -1)) / 255.0
@@ -109,7 +109,7 @@ def generate_json_for_azureml_from_images() -> None:
         file.write(data_json)
 
 
-def main():
+def main() -> None:
     logging.basicConfig(level=logging.INFO)
 
     generate_images(2)

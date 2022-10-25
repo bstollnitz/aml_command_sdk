@@ -42,6 +42,7 @@ def generate_csv_from_images() -> None:
     image_paths = [f for f in Path(IMAGES_DIR).iterdir() if Path.is_file(f)]
     image_paths.sort()
 
+    #pylint: disable=invalid-name
     X = np.empty((0, 0))
     for (i, image_path) in enumerate(image_paths):
         with Image.open(image_path) as image:

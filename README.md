@@ -23,7 +23,6 @@ To learn more about the code in this repo, check out the accompanying blog post:
   conda activate aml_command_cli
   ```
 * In a terminal window, log in to Azure by executing `az login --use-device-code`. 
-* Set your default subscription by executing `az account set -s "<YOUR_SUBSCRIPTION_NAME_OR_ID>"`. You can verify your default subscription by executing `az account show`, or by looking at `~/.azure/azureProfile.json`.
 * Add a `config.json` file to the root of your project (or somewhere in the parent folder hierarchy) containing your Azure subscription ID, resource group, and workspace:
 ```
 {

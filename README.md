@@ -17,7 +17,7 @@ To learn more about the code in this repo, check out the accompanying blog post:
 * Alternatively, if you plan to use your local machine:
   * Install the Azure CLI by following the instructions in the [documentation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?WT.mc_id=aiml-67316-bstollnitz).
   * Install the ML extension to the Azure CLI by following the "Installation" section of the [documentation](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli?WT.mc_id=aiml-67316-bstollnitz).
-* In a terminal window, login to Azure by executing `az login --use-device-code`. 
+* In a terminal window, log into Azure by executing `az login --use-device-code`. 
 * Add a `config.json` file to the root of your project (or somewhere in the parent folder hierarchy) containing your Azure subscription ID, resource group, and workspace:
 ```
 {

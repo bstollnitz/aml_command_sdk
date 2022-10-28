@@ -4,17 +4,14 @@
     "name": "Miniconda (Python 3)",
     "build": {
         "context": "..",
-        "dockerfile": "Dockerfile",
+        "dockerfile": "Dockerfile"
     },
     "settings": {
-        "python.defaultInterpreterPath": "/opt/conda/bin/python",
+        "python.defaultInterpreterPath": "/opt/conda/bin/python"
     },
-    "extensions": [
-        "ms-toolsai.vscode-ai",
-    ],
     "features": {
         "azure-cli": "latest"
     },
     "remoteUser": "vscode",
-    "onCreateCommand": "az extension add -n ml -y",
+    "onCreateCommand": "az extension add -n ml -y"
 }

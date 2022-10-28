@@ -9,7 +9,7 @@ from azure.identity import DefaultAzureCredential
 from azure.ai.ml.entities import (AmlCompute, Data, Environment, CommandJob,
                                   Model)
 
-from .common import MODEL_NAME
+from common import MODEL_NAME
 
 COMPUTE_NAME = "cluster-cpu"
 DATA_NAME = "data-fashion-mnist"
@@ -53,6 +53,7 @@ def main() -> None:
     job = CommandJob(
         description="Trains a simple neural network on the Fashion-MNIST " +
         "dataset.",
+        experiment_name="aml_command_sdk",
         compute=COMPUTE_NAME,
         inputs=dict(fashion_mnist=Input(path=f"{DATA_NAME}@latest")),
         outputs=dict(model=Output(type=AssetTypes.MLFLOW_MODEL)),

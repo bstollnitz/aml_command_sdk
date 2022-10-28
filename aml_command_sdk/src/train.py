@@ -4,7 +4,6 @@ import argparse
 import logging
 import shutil
 from pathlib import Path
-from typing import Tuple
 
 import mlflow
 import numpy as np
@@ -16,8 +15,8 @@ from torch.utils.data import DataLoader, random_split
 from torchvision import datasets
 from torchvision.transforms import ToTensor
 
-from .neural_network import NeuralNetwork
-from .utils_train_nn import evaluate, fit
+from neural_network import NeuralNetwork
+from utils_train_nn import evaluate, fit
 
 DATA_DIR = "aml_command_sdk/data"
 MODEL_DIR = "aml_command_sdk/model/"
@@ -59,6 +58,7 @@ def save_model(model_dir: str, model: nn.Module) -> None:
     full_code_paths = [
         Path(Path(__file__).parent, code_path) for code_path in code_paths
     ]
+
     shutil.rmtree(model_dir, ignore_errors=True)
     logging.info("Saving model to %s", model_dir)
     mlflow.pytorch.save_model(pytorch_model=model,

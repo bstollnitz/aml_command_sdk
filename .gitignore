@@ -132,3 +132,4 @@ data/
 model/
 mlruns/
 model-command-sdk/
+config.json

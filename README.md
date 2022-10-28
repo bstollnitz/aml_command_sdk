@@ -18,17 +18,28 @@ To learn more about the code in this repo, check out the accompanying blog post:
   * Install the Azure CLI by following the instructions in the [documentation](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?WT.mc_id=aiml-67316-bstollnitz).
   * Install the ML extension to the Azure CLI by following the "Installation" section of the [documentation](https://docs.microsoft.com/en-us/azure/machine-learning/how-to-configure-cli?WT.mc_id=aiml-67316-bstollnitz).
 * In a terminal window, login to Azure by executing `az login --use-device-code`. 
-* Set your default subscription by executing `az account set -s "<YOUR_SUBSCRIPTION_NAME_OR_ID>"`. You can verify your default subscription by executing `az account show`, or by looking at `~/.azure/azureProfile.json`.
-* Set your default resource group and workspace by executing `az configure --defaults group="<YOUR_RESOURCE_GROUP>" workspace="<YOUR_WORKSPACE>"`. You can verify your defaults by executing `az configure --list-defaults` or by looking at `~/.azure/config`.
+* Add a `config.json` file to the root of your project (or somewhere in the parent folder hierarchy) containing your Azure subscription ID, resource group, and workspace:
+```
+{
+    "subscription_id": "<YOUR_SUBSCRIPTION_ID>",
+    "resource_group": "<YOUR_RESOURCE_GROUP>",
+    "workspace_name": "<YOUR_WORKSPACE>"
+}
+```
 * You can now open the [Azure Machine Learning studio](https://ml.azure.com/?WT.mc_id=aiml-67316-bstollnitz), where you'll be able to see and manage all the machine learning resources we'll be creating.
-* Although not essential to run the code in this post, I highly recommend installing the [Azure Machine Learning extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
+* Although not essential to run the code in this post, I highly recommend installing the [Azure Machine Learning extension for VS Code](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai), and logging in to it. This will allow you to see the resources you create in the Azure Machine Learning studio from within VS Code.
+
 
 
 ## Project setup
 
-If you have access to GitHub Codespaces, click on the "Code" button in this GitHub repo, select the "Codespaces" tab, and then click on "New codespace."
+If you have access to GitHub Codespaces, click on the "Code" button in this GitHub repo, select the "Codespaces" tab, and then click on "New codespace." Once your codespace is ready, log into Azure by typing the following command in the terminal:
 
-Alternatively, you can set up your local machine with the right conda environment using the following steps.
+```
+az login --use-device-code
+```
+
+If you're not using Codespaces, you can set up your local machine with the right conda environment using the following steps.
 
 Install conda environment:
 
@@ -45,11 +56,7 @@ conda activate aml_command_sdk
 
 ## Train and predict locally
 
-```
-cd aml_command_sdk
-```
-
-* Run src/train.py.
+* Under "Run and Debug" on VS Code's left navigation, choose the "Train locally" run configuration and press F5.
 * You can analyze the metrics logged in the "mlruns" directory with the following command:
 
 ```
@@ -59,6 +66,7 @@ mlflow ui
 * Make a local prediction using the trained mlflow model. You can use either csv or json files:
 
 ```
+cd aml_command_sdk
 mlflow models predict --model-uri "model" --input-path "test_data/images.csv" --content-type csv
 mlflow models predict --model-uri "model" --input-path "test_data/images.json" --content-type json
 ```
@@ -66,27 +74,20 @@ mlflow models predict --model-uri "model" --input-path "test_data/images.json" -
 
 ## Train and deploy in the cloud
 
-Make sure you have a "config.json" file somewhere in the parent folder hierarchy containing your Azure subscription ID, resource group, and workspace:
-
-```
-{
-    "subscription_id": ...,
-    "resource_group": ...,
-    "workspace_name": ...
-}
-```
 
 ### Create and run the job, which outputs a model
 
-Run cloud/job.py.
+Select the run configuration "Train in the cloud" and press F5 to train in the cloud.
+
 
 ### Create and invoke the endpoint for the model
 
-Run cloud/endpoint.py.
+Select the run configuration "Create endpoint" and press F5 to create an endpoint in the cloud and invoke it.
+
 
 ### Clean up the endpoint
 
-Once you're done working with the endpoint, you can clean it up to avoid getting charged by running cloud/delete_endpoint.py.
+Once you're done working with the endpoint, you can clean it up to avoid getting charged by selecting the "Delete endpoint" run configuration and pressing F5.
 
 
 ## Related resources

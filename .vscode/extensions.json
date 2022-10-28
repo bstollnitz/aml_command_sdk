@@ -1,6 +1,7 @@
 {
     "recommendations": [
-        "rioj7.command-variable",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
         "ms-toolsai.vscode-ai",
     ]
 }

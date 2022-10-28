@@ -7,7 +7,7 @@ from azure.ai.ml import MLClient
 from azure.ai.ml.entities import ManagedOnlineDeployment, ManagedOnlineEndpoint
 from azure.identity import DefaultAzureCredential
 
-from .common import MODEL_NAME, ENDPOINT_NAME
+from common import MODEL_NAME, ENDPOINT_NAME
 
 DEPLOYMENT_NAME = "blue"
 TEST_DATA_PATH = Path(

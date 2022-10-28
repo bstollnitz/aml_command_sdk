@@ -9,6 +9,11 @@
     "settings": {
         "python.defaultInterpreterPath": "/opt/conda/bin/python"
     },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-toolsai.vscode-ai"
+    ],
     "features": {
         "azure-cli": "latest"
     },

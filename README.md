@@ -20,7 +20,7 @@ To learn more about the code in this repo, check out the accompanying blog post:
   * Install and activate the conda environment by executing the following commands:
   ```
   conda env create -f environment.yml
-  conda activate aml_command_cli
+  conda activate aml_command_sdk
   ```
 * In a terminal window, log in to Azure by executing `az login --use-device-code`. 
 * Add a `config.json` file to the root of your project (or somewhere in the parent folder hierarchy) containing your Azure subscription ID, resource group, and workspace:

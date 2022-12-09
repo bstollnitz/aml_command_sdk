@@ -25,7 +25,7 @@ def main() -> None:
         auth_mode="key",
     )
     registered_endpoint = ml_client.online_endpoints.begin_create_or_update(
-        endpoint)
+        endpoint).result()
 
     # Get the latest version of the registered model.
     registered_model = ml_client.models.get(name=MODEL_NAME, label="latest")
@@ -36,11 +36,12 @@ def main() -> None:
                                          model=registered_model,
                                          instance_type="Standard_DS4_v2",
                                          instance_count=1)
-    ml_client.online_deployments.begin_create_or_update(deployment)
+    ml_client.online_deployments.begin_create_or_update(deployment).result()
 
     # Set deployment traffic to 100%.
     registered_endpoint.traffic = {"blue": 100}
-    ml_client.online_endpoints.begin_create_or_update(registered_endpoint)
+    ml_client.online_endpoints.begin_create_or_update(
+        registered_endpoint).result()
 
     # Invoke the endpoint.
     result = ml_client.online_endpoints.invoke(endpoint_name=ENDPOINT_NAME,

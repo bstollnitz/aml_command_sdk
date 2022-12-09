@@ -3,11 +3,10 @@
 import logging
 from pathlib import Path
 
-from azure.ai.ml import MLClient, Input, Output
+from azure.ai.ml import MLClient, Input, Output, command
 from azure.ai.ml.constants import AssetTypes
 from azure.identity import DefaultAzureCredential
-from azure.ai.ml.entities import (AmlCompute, Data, Environment, CommandJob,
-                                  Model)
+from azure.ai.ml.entities import (AmlCompute, Data, Environment, Model)
 
 from common import MODEL_NAME
 
@@ -50,7 +49,7 @@ def main() -> None:
                               conda_file=CONDA_PATH)
 
     # Create the job.
-    job = CommandJob(
+    job = command(
         description="Trains a simple neural network on the Fashion-MNIST " +
         "dataset.",
         experiment_name="aml_command_sdk",

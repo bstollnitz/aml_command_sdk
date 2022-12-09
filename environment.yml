@@ -18,4 +18,4 @@ dependencies:
     - types-tqdm==4.64.7.1
     - pandas-stubs==1.5.0.221012
     - types-Pillow==9.2.2.2
-    - azure-ai-ml==0.1.0b4
+    - azure-ai-ml==1.2.0

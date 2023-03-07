@@ -44,6 +44,7 @@ To learn more about the code in this repo, check out the accompanying blog post:
 mlflow ui
 ```
 
+* Navigate to the root of this repo in your terminal.
 * Make a local prediction using the trained mlflow model. You can use either csv or json files:
 
 ```

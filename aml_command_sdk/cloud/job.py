@@ -32,7 +32,7 @@ def main() -> None:
         min_instances=0,
         max_instances=4,
     )
-    ml_client.begin_create_or_update(cluster_cpu)
+    ml_client.begin_create_or_update(cluster_cpu).result()
 
     # Create the data set.
     dataset = Data(
